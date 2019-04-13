@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Cargurus Blog`,
+    title: `Revved`,
     author: `Tommy Parnell`,
     description: `A starter blog demonstrating what Gatsby can do.`,
     siteUrl: `https://cargurus.dev/`,
@@ -9,6 +9,8 @@ module.exports = {
     },
   },
   plugins: [
+    `gatsby-plugin-less`,
+    `gatsby-plugin-react-svg`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -57,7 +59,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Cargurus Blog`,
+        name: `Revved`,
         short_name: `GatsbyJS`,
         start_url: `/`,
         background_color: `#ffffff`,
