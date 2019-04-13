@@ -12,6 +12,18 @@ module.exports = {
     `gatsby-plugin-less`,
     `gatsby-plugin-react-svg`,
     {
+      resolve: 'gatsby-plugin-eslint',
+      options: {
+        test: /\.js$|\.jsx$/,
+        exclude: /(node_modules|.cache|public)/,
+        stages: ['develop', 'build-javascript'],
+        options: {
+          emitWarning: true,
+          failOnError: true
+        }
+      }
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/content/blog`,
