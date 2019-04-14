@@ -6,4 +6,4 @@ description: "Welcome to Revved, our new blog"
 
 Hello world! Welcome to the CarGurus Engineering blog. Follow us, because some awesome content is coming soon.
 
-speling mistake
+spelling mistake
