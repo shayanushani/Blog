@@ -44,6 +44,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.12.4",
     "gatsby-plugin-eslint": "^2.0.4",
+    "markdown-spellcheck": "^1.3.1",
     "prettier": "^1.16.4"
   },
   "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
@@ -62,6 +63,9 @@
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "yarn run develop",
     "serve": "gatsby serve",
+    "check:spell": "mdspell --ignore-numbers --en-us content/**/*.md",
+    "check:spell:ci": "mdspell --report --ignore-numbers --en-us content/**/*.md",
+    "new:post": "node createPost.js",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
   }
 }
