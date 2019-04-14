@@ -44,6 +44,8 @@
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.12.4",
     "gatsby-plugin-eslint": "^2.0.4",
+    "husky": "^1.3.1",
+    "markdown-spellcheck": "^1.3.1",
     "prettier": "^1.16.4"
   },
   "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
@@ -56,12 +58,24 @@
     "type": "git",
     "url": "git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn run all"
+    }
+  },
   "scripts": {
+    "all": "yarn run --silent check:spell:echo && yarn run check:spell:ci && yarn run build:echo && yarn run build",
+    "build:echo": "echo \"👷‍ Attempting to build gatsby blog\"",
     "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "yarn run develop",
     "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
+    "check:spell": "mdspell --ignore-numbers --en-us content/**/*.md",
+    "check:spell:ci": "mdspell --report --ignore-numbers --en-us content/**/*.md",
+    "check:spell:echo": "echo \"👀 Checking your spelling\"",
+    "new:post": "node createPost.js",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
+    "pre-commit": "yarn run all"
   }
 }
