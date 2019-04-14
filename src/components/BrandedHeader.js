@@ -7,6 +7,7 @@ export default function BrandedHeader() {
   return (
     <div className={styles.brandedHeader}>
       <Link
+        aria-label="Blog Homepage"
         style={{
           boxShadow: 'none',
           textDecoration: 'none',
