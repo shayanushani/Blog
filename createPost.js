@@ -10,6 +10,7 @@ const postName = process.argv[2].replace(/\s/g, '-');
 const resolvedPath = resolve(__dirname, 'content', 'blog', postName);
 if (existsSync(resolvedPath)) {
   console.error(`ERROR, post ${postName} already exists at ${resolvedPath}`);
+  process.exit(1);
 }
 mkdirSync(resolvedPath);
 const template = `---
