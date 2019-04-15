@@ -1,3 +1,4 @@
+/* eslint-disable quotes */
 /**
  * Bio component that queries for data
  * with Gatsby's StaticQuery component
@@ -5,49 +6,65 @@
  * See: https://www.gatsbyjs.org/docs/static-query/
  */
 
-import React from 'react';
-import { StaticQuery, graphql } from 'gatsby';
-import Image from 'gatsby-image';
+import React from "react";
+import { StaticQuery, graphql } from "gatsby";
+import Image from "gatsby-image";
 
-import { rhythm } from '../utils/typography';
+import { rhythm } from "../utils/typography";
 
-function Bio() {
+const bioQuery = graphql`
+  query BioQuery {
+    avatar: allFile(filter: { absolutePath: { regex: "/\/content\/assets\/authors/" } }) {
+      nodes {
+        base,
+        childImageSharp {
+          fixed(width: 50, height: 50) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+    }
+  }
+`;
+
+function Bio({ author }) {
+  if (!author) {
+    return null;
+  }
+  const { name, twitter, avatar } = author;
+  // todo: this needs to be broken up better
   return (
     <StaticQuery
       query={bioQuery}
       render={(data) => {
-        const { author, social } = data.site.siteMetadata;
+        const currentAuthorsImage = data.avatar.nodes.find(a => a.base === avatar);
         return (
           <div
             style={{
-              display: 'flex',
+              display: "flex",
               marginBottom: rhythm(2.5),
             }}
           >
-            <Image
-              fixed={data.avatar.childImageSharp.fixed}
-              alt={author}
-              style={{
-                marginRight: rhythm(1 / 2),
-                marginBottom: 0,
-                minWidth: 50,
-                borderRadius: '100%',
-              }}
-              imgStyle={{
-                borderRadius: '50%',
-              }}
-            />
+            { currentAuthorsImage && (
+              <Image
+                fixed={currentAuthorsImage.childImageSharp.fixed}
+                alt={name}
+                style={{
+                  marginRight: rhythm(1 / 2),
+                  marginBottom: 0,
+                  minWidth: 50,
+                  borderRadius: "100%",
+                }}
+                imgStyle={{
+                  borderRadius: "50%",
+                }}
+              />
+            )}
             <p>
-              Written by
-              {' '}
-              <strong>{author}</strong>
-              {' '}
-who lives and works in San
-              Francisco building useful things.
-              {' '}
-              <a href={`https://twitter.com/${social.twitter}`}>
-                You should follow him on Twitter
-              </a>
+            Written by &nbsp;
+              <strong>{name}</strong>
+              &nbsp;
+              {twitter && <a href={`https://twitter.com/${twitter}`}>Find them on twitter</a>}
             </p>
           </div>
         );
@@ -55,25 +72,5 @@ who lives and works in San
     />
   );
 }
-
-const bioQuery = graphql`
-  query BioQuery {
-    avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
-      childImageSharp {
-        fixed(width: 50, height: 50) {
-          ...GatsbyImageSharpFixed
-        }
-      }
-    }
-    site {
-      siteMetadata {
-        author
-        social {
-          twitter
-        }
-      }
-    }
-  }
-`;
 
 export default Bio;
