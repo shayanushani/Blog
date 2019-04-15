@@ -27,7 +27,7 @@ class Layout extends React.Component {
             {new Date().getFullYear()}
 ,
             {' '}
-            <a href="www.cargurus.com">Cargurus</a>
+            <a href="www.cargurus.com">CarGurus</a>
           </footer>
         </div>
       </Fragment>
