@@ -37,6 +37,14 @@ module.exports = {
         name: `assets`,
       },
     },
+    `gatsby-transformer-json`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/authors/authors.json`,
+        name: `authors`,
+      },
+    },
     {
       resolve: `gatsby-transformer-remark`,
       options: {

@@ -1,11 +1,20 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
 
+import Bio from '../components/bio.js';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import { rhythm, scale } from '../utils/typography';
 
 class BlogPostTemplate extends React.Component {
+  getAuthor() {
+    const authorId = this.props.data.markdownRemark.frontmatter.author;
+    if (!authorId) {
+      return null;
+    }
+    return this.props.data.allAuthorsJson.nodes.find(i => i.id === authorId);
+  }
+
   render() {
     const post = this.props.data.markdownRemark;
     const siteTitle = this.props.data.site.siteMetadata.title;
@@ -34,7 +43,7 @@ class BlogPostTemplate extends React.Component {
             marginBottom: rhythm(1),
           }}
         />
-        {/* <Bio /> */}
+        <Bio author={this.getAuthor()} />
 
         <ul
           style={{
@@ -73,6 +82,14 @@ export default BlogPostTemplate;
 
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
+    allAuthorsJson { 
+      nodes {
+        id,
+        name,
+        avatar,
+        twitter
+      }
+    }
     site {
       siteMetadata {
         title
@@ -87,6 +104,7 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
+        author
       }
     }
   }
