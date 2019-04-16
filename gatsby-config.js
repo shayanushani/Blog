@@ -9,6 +9,7 @@ module.exports = {
     },
   },
   plugins: [
+    `gatsby-plugin-netlify`,
     `gatsby-plugin-less`,
     `gatsby-plugin-react-svg`,
     {
@@ -53,6 +54,7 @@ module.exports = {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 590,
+              withWebp: true
             },
           },
           {
