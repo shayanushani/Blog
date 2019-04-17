@@ -20,4 +20,4 @@ Then you can author the post as normal with markdown. To run the server locally,
 
 ## Getting your post live
 
-To get your post live, simply make a branch, create a pull request and then get it merged. Netlify will automatically pick up on new commits into master and deploy them.
+To get your post live, simply make a branch, create a pull request and then get it merged. Netlify will automatically pick up on new commits into master and deploy them. Any new content must be approved by @stodesca github will enforce this automatically with its codeowner system.
