@@ -27,4 +27,4 @@ To get your post live, simply make a branch, create a pull request and then get 
 
 To start the blog locally run `yarn install` and then run `yarn start`. The blog itself supports hot module reloading, so most changes you make should automatically apply in the browser. 
 
-We use [less](http://lesscss.org/) as our css processor, and [https://github.com/css-modules/css-modules](css modules) to import our styles into our components. Each component should have a less file with the name of `component.module.less`. Note the `.module` for gatsby to understand a less file is a css module you have to have the `.module` otherwise your styles won't get imported.
+We use [less](http://lesscss.org/) as our css processor, and [css modules](https://github.com/css-modules/css-modules) to import our styles into our components. Each component should have a less file with the name of `component.module.less`. Note the `.module` for gatsby to understand a less file is a css module you have to have the `.module` otherwise your styles won't get imported.
