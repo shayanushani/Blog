@@ -8,5 +8,15 @@
     {
         "id": "klangerman",
         "name": "Katie Langerman"
+    },
+    {
+        "id": "swoodworth",
+        "name": "Seth Woodworth",
+        "avatar": "swoodworth.jpg"
+    },
+    {
+        "id": "klomeli",
+        "name": "Kyle Lomeli",
+        "avatar": "klomeli.jpeg"
     }
 ]
