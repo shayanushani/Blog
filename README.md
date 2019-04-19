@@ -21,3 +21,10 @@ Then you can author the post as normal with markdown. To run the server locally,
 ## Getting your post live
 
 To get your post live, simply make a branch, create a pull request and then get it merged. Netlify will automatically pick up on new commits into master and deploy them. Any new content must be approved by @stodesca github will enforce this automatically with its codeowner system.
+
+
+## Editing the code
+
+To start the blog locally run `yarn install` and then run `yarn start`. The blog itself supports hot module reloading, so most changes you make should automatically apply in the browser. 
+
+We use [less](http://lesscss.org/) as our css processor, and [https://github.com/css-modules/css-modules](css modules) to import our styles into our components. Each component should have a less file with the name of `component.module.less`. Note the `.module` for gatsby to understand a less file is a css module you have to have the `.module` otherwise your styles won't get imported.
