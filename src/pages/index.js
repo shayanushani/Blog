@@ -4,6 +4,7 @@ import { Link, graphql } from 'gatsby';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import { rhythm } from '../utils/typography';
+import styles from './index.module.less';
 
 class BlogIndex extends React.Component {
   render() {
@@ -36,6 +37,7 @@ class BlogIndex extends React.Component {
                   __html: node.frontmatter.description || node.excerpt,
                 }}
               />
+              <hr className={styles.articleHr} />
             </article>
           );
         })}
