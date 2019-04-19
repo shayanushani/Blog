@@ -5,8 +5,30 @@ import Bio from '../components/bio.js';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import { rhythm, scale } from '../utils/typography';
+import Tag from '../components/common/tag.js';
 
 class BlogPostTemplate extends React.Component {
+  getTags() {
+    if (!this.props.data.markdownRemark.frontmatter.tags) {
+      return null;
+    }
+    const tags = this.props
+      .data
+      .markdownRemark
+      .frontmatter
+      .tags
+      .map(a => a.toLowerCase())
+      .sort()
+      .map(tag => <Tag key={tag} tagName={tag} />);
+    return (
+      <div>
+        Tagged In:
+        {tags}
+        <br />
+      </div>
+    );
+  }
+
   getAuthor() {
     const authorId = this.props.data.markdownRemark.frontmatter.author;
     if (!authorId) {
@@ -27,7 +49,7 @@ class BlogPostTemplate extends React.Component {
           description={post.frontmatter.description || post.excerpt}
         />
         <h1>{post.frontmatter.title}</h1>
-        <p
+        <time
           style={{
             ...scale(-1 / 5),
             display: 'block',
@@ -36,8 +58,9 @@ class BlogPostTemplate extends React.Component {
           }}
         >
           {post.frontmatter.date}
-        </p>
+        </time>
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
+        {this.getTags()}
         <hr
           style={{
             marginBottom: rhythm(1),
@@ -105,6 +128,7 @@ export const pageQuery = graphql`
         date(formatString: "MMMM DD, YYYY")
         description
         author
+        tags
       }
     }
   }

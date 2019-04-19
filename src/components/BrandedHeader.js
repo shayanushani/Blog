@@ -5,7 +5,7 @@ import Logo from '../../content/assets/cargurus-logo.svg';
 
 export default function BrandedHeader() {
   return (
-    <div className={styles.brandedHeader}>
+    <nav className={styles.brandedHeader}>
       <Link
         aria-label="Blog Homepage"
         style={{
@@ -17,6 +17,6 @@ export default function BrandedHeader() {
       >
         <Logo />
       </Link>
-    </div>
+    </nav>
   );
 }

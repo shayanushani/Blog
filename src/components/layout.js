@@ -1,36 +1,30 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 
+import styles from './layout.module.less';
 import { rhythm } from '../utils/typography';
 import BrandedHeader from './BrandedHeader.js';
+import BrandedFooter from './BrandedFooter.js';
 
 class Layout extends React.Component {
   render() {
     // eslint-disable-next-line react/prop-types
     const { children } = this.props;
     return (
-      <Fragment>
-        <nav>
-          <BrandedHeader />
-        </nav>
-        <div
-          style={{
-            marginLeft: 'auto',
-            marginRight: 'auto',
-            maxWidth: rhythm(24),
-            padding: `${rhythm(1)} ${rhythm(3 / 4)}`,
-          }}
-        >
-          <main>{children}</main>
-          <footer>
-            ©
-            {' '}
-            {new Date().getFullYear()}
-,
-            {' '}
-            <a href="https://www.cargurus.com">CarGurus</a>
-          </footer>
+      <div className={styles.container}>
+        <BrandedHeader />
+        <div className={styles.mainWrap}>
+          <main
+            className={styles.main}
+            style={{
+              maxWidth: rhythm(24),
+              padding: `${rhythm(1)} ${rhythm(3 / 4)}`,
+            }}
+          >
+            {children}
+          </main>
         </div>
-      </Fragment>
+        <BrandedFooter />
+      </div>
     );
   }
 }

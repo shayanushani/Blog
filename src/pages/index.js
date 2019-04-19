@@ -20,7 +20,7 @@ class BlogIndex extends React.Component {
         {posts.map(({ node }) => {
           const title = node.frontmatter.title || node.fields.slug;
           return (
-            <div key={node.fields.slug}>
+            <article key={node.fields.slug}>
               <h3
                 style={{
                   marginBottom: rhythm(1 / 4),
@@ -30,13 +30,13 @@ class BlogIndex extends React.Component {
                   {title}
                 </Link>
               </h3>
-              <small>{node.frontmatter.date}</small>
+              <time>{node.frontmatter.date}</time>
               <p
                 dangerouslySetInnerHTML={{
                   __html: node.frontmatter.description || node.excerpt,
                 }}
               />
-            </div>
+            </article>
           );
         })}
       </Layout>
