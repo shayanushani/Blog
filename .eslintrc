@@ -7,7 +7,9 @@
       "import/extensions": "always",
       "react/prefer-stateless-function": "off",
       "react/destructuring-assignment": "off",
-      "react/no-danger": "off"
+      "react/no-danger": "off",
+      "object-curly-newline": "off",
+      "indent": "off"
     },
     "extends": [
       "airbnb"
