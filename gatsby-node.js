@@ -6,7 +6,8 @@ exports.createPages = ({ graphql, actions }) => {
 
   const blogPost = path.resolve('./src/templates/blog-post.js');
   const tagTemplate = path.resolve('./src/templates/tag-template.js');
-
+  const allTagTemplate = path.resolve('./src/templates/all-tags-template.js');
+  
   return graphql(
     `
       {
@@ -60,6 +61,13 @@ exports.createPages = ({ graphql, actions }) => {
           tag,
         },
       });
+    });
+    createPage({
+      path: '/tags/',
+      component: allTagTemplate,
+      context: {
+        tags,
+      },
     });
     return null;
   });

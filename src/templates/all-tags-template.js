@@ -1,12 +1,10 @@
 import React from 'react';
-import { graphql } from 'gatsby';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import Tag from '../components/common/tag.js';
 
-export default function AllTags({ data }) {
-    const { tags } = data.markdownRemark.frontmatter;
+export default function AllTags({ pageContext: { tags } }) {
     const tagPills = tags.map(i => <Tag key={i} tagName={i} />);
     return (
       <Layout title="All Tags">
@@ -20,13 +18,3 @@ export default function AllTags({ data }) {
       </Layout>
     );
 }
-
-export const pageQuery = graphql`
-query {
-    markdownRemark {
-    frontmatter {
-      tags
-    }
-  }
-}
-`;
