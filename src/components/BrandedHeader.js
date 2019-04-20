@@ -7,12 +7,7 @@ export default function BrandedHeader() {
   return (
     <nav className={styles.brandedHeader}>
       <Link
-        aria-label="Blog Homepage"
-        style={{
-          boxShadow: 'none',
-          textDecoration: 'none',
-          color: 'inherit',
-        }}
+        aria-label="CarGurus Logo"
         to="/"
       >
         <Logo />
