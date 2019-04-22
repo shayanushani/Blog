@@ -1,16 +1,17 @@
 import React from 'react';
-import { graphql } from 'gatsby';
 
+// Components
+import { graphql } from 'gatsby';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import PostSummary from '../components/PostSummary';
 
-export default function BlogIndex({ data, location }) {
-  const siteTitle = data.site.siteMetadata.title;
+const Tags = ({ pageContext, data }) => {
+  const { tag } = pageContext;
+  const siteTitle = `posts tagged with ${tag}`;
   const posts = data.allMarkdownRemark.edges;
   const renderedPost = posts.map(({ node }) => (
     <PostSummary
-      key={node.fields.slug}
       title={node.frontmatter.title || node.fields.slug}
       slug={node.fields.slug}
       date={node.frontmatter.date}
@@ -18,24 +19,26 @@ export default function BlogIndex({ data, location }) {
     />
 ));
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout title={siteTitle}>
       <SEO
-        title="All posts"
-        keywords={['blog', 'gatsby', 'javascript', 'react']}
+        title={siteTitle}
+        keywords={[siteTitle]}
       />
       {renderedPost}
     </Layout>
   );
-}
+};
+
+export default Tags;
 
 export const pageQuery = graphql`
-  query {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+  query($tag: String) {
+    allMarkdownRemark(
+      limit: 2000
+      sort: { fields: [frontmatter___date], order: DESC }
+      filter: { frontmatter: { tags: { in: [$tag] } } }
+    ) {
+      totalCount
       edges {
         node {
           excerpt
