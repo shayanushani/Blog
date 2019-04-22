@@ -72,7 +72,7 @@ function SEO({
         {
           name: 'google-site-verification',
           content: 'aQ3mfyY1q1ouMw6O_bslHPXVWBjTZZZwyHY3WyOXjzE',
-        }
+        },
       ]
         .concat(
           keywords.length > 0
