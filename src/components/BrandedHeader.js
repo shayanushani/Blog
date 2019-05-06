@@ -20,7 +20,7 @@ export default function BrandedHeader() {
         <Logo className={styles.logo} />
       </Link>
       <div className={styles.spacer} />
-      <FontAwesomeIcon onClick={setExpanded} className={styles.hamburger} icon={faBars} size="lg" />
+      <FontAwesomeIcon role="button" onClick={setExpanded} className={styles.hamburger} icon={faBars} size="lg" />
       <Menu onClose={() => setExpanded(false)} isOpen={expanded}>
         <Link to="/tags/">All Tags</Link>
         <a href="/rss.xml">RSS</a>

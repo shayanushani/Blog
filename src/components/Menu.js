@@ -8,7 +8,7 @@ export default function Menu({ isOpen, children, onClose }) {
     return (
       <div className={clsx({ [styles.menu]: true, [styles.expanded]: isOpen })}>
         <div className={styles.header}>
-          <span className={styles.close}><FontAwesomeIcon size="lg" icon={faTimesCircle} onClick={onClose} /></span>
+          <span role="button" className={styles.close}><FontAwesomeIcon size="lg" icon={faTimesCircle} onClick={onClose} /></span>
         </div>
         <div className={styles.links}>
           {children}
