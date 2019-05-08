@@ -1,0 +1,44 @@
+@import (reference) "./less/variables.less";
+
+.menu {
+    position: fixed;
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: @cg-blue;
+    color: white;
+    overflow-x: hidden;
+    transition: 0.5s;
+    box-shadow: -20px 0 85px rgba(0,0,0,.5)
+}
+.expanded {
+    width: 50%;
+    @media screen and (max-width: 768px) {
+        width: 100%;
+    }
+}
+.header {
+    display: flex;
+    flex-direction: row-reverse;
+    padding: 1.2rem 1.2rem;
+}
+.links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    a {
+        font-size: 2rem;
+        color: white;
+        text-decoration: none;
+        margin-bottom: .5em;
+    }
+}
+.close {
+    &:hover {
+        cursor: pointer;
+    }
+}

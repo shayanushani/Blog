@@ -3,9 +3,22 @@
     padding: 1rem 1rem 1rem 1rem;
     border-bottom: 1px solid @border-stroke;
     background-color: white;
-    color: black;   
-
+    color: black;
+    display: flex;
+    .logo {
+        width: 10rem;
+    }
+    .spacer {
+        flex-grow: 1;
+    }
+    .hamburger {
+        align-self: center;
+        &:hover {
+            cursor: pointer;
+        }
+    }
     svg {
-        max-width: 10em;
+        fill: white;
+        width: 1em;
     }
 }
