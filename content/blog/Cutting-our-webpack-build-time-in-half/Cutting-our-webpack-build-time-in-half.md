@@ -8,7 +8,15 @@ When I joined CarGurus last July, I didn't really understand the scale at which 
 
 > The simple fact is our builds were slow, but so was our user experience
 
-## HashCache Plugin
+## DLL's
+
+## Thread Loader
+
+## Uglify/Terser 
+
+parallel option
+
+
 
 
 
