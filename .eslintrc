@@ -9,11 +9,15 @@
       "react/destructuring-assignment": "off",
       "react/no-danger": "off",
       "object-curly-newline": "off",
-      "indent": "off"
+      "indent": "off",
+      "prettier/prettier": "error",
+      "react/jsx-one-expression-per-line": "off",
+      "arrow-parens": "off"
     },
     "extends": [
       "airbnb"
     ],
+    "plugins": ["prettier"],
     "globals": {
       "process": true
     }

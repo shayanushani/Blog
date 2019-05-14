@@ -10,10 +10,7 @@ const typography = new Typography({
   googleFonts: [
     {
       name: 'Lato',
-      styles: [
-        '400',
-        '700',
-      ],
+      styles: ['400', '700'],
     },
   ],
 });
