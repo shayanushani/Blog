@@ -8,26 +8,30 @@ import styles from './BrandedHeader.module.less';
 import Logo from '../../content/assets/cargurus-logo.svg';
 import Menu from './Menu';
 
-
 export default function BrandedHeader() {
   const [expanded, setExpanded] = useState(false);
   return (
     <nav className={styles.brandedHeader}>
-      <Link
-        aria-label="HomePage Link"
-        to="/"
-      >
+      <Link aria-label="HomePage Link" to="/">
         <Logo className={styles.logo} />
       </Link>
       <div className={styles.spacer} />
-      <FontAwesomeIcon role="button" onClick={setExpanded} className={styles.hamburger} icon={faBars} size="lg" />
+      <FontAwesomeIcon
+        role="button"
+        onClick={setExpanded}
+        className={styles.hamburger}
+        icon={faBars}
+        size="lg"
+      />
       <Menu onClose={() => setExpanded(false)} isOpen={expanded}>
         <Link to="/tags/">All Tags</Link>
         <a href="/rss.xml">RSS</a>
         <a aria-label="github" href="https://github.com/cargurus/Blog">
           <GitHubIcon />
         </a>
-        <a aria-label="twitter" href="https://twitter.com/cargurus/"><TwitterIcon /></a>
+        <a aria-label="twitter" href="https://twitter.com/cargurus/">
+          <TwitterIcon />
+        </a>
       </Menu>
     </nav>
   );

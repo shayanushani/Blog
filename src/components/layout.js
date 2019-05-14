@@ -14,7 +14,7 @@ export default function Layout({ children }) {
         <main
           className={styles.main}
           style={{
-            maxWidth: rhythm(24),
+            maxWidth: rhythm(30),
             padding: `${rhythm(1)} ${rhythm(3 / 4)}`,
           }}
         >

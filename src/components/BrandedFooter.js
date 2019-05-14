@@ -4,10 +4,7 @@ import styles from './BrandedFooter.module.less';
 export default function BrandedFooter() {
   return (
     <footer className={styles.footer}>
-      ©
-      {new Date().getFullYear()}
-      ,
-      {' '}
+      ©{new Date().getFullYear()},{' '}
       <a href="https://www.cargurus.com">CarGurus</a>
     </footer>
   );

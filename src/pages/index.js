@@ -16,7 +16,7 @@ export default function BlogIndex({ data, location }) {
       date={node.frontmatter.date}
       description={node.frontmatter.description || node.excerpt}
     />
-));
+  ));
   return (
     <Layout location={location} title={siteTitle}>
       <SEO

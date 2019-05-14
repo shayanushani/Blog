@@ -3,7 +3,9 @@
         "id": "tparnell",
         "name": "Tommy Parnell",
         "avatar": "tparnell.jpeg",
-        "twitter": "TerribleDev"
+        "twitter": "TerribleDev",
+        "github": "terribledev",
+        "blog": "https://terrible.dev"
     },
     {
         "id": "klangerman",

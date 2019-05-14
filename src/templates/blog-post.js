@@ -12,11 +12,7 @@ class BlogPostTemplate extends React.Component {
     if (!this.props.data.markdownRemark.frontmatter.tags) {
       return null;
     }
-    const tags = this.props
-      .data
-      .markdownRemark
-      .frontmatter
-      .tags
+    const tags = this.props.data.markdownRemark.frontmatter.tags
       .map(a => a.toLowerCase())
       .sort()
       .map(tag => <Tag key={tag} tagName={tag} />);
@@ -80,18 +76,14 @@ class BlogPostTemplate extends React.Component {
           <li>
             {previous && (
               <Link to={previous.fields.slug} rel="prev">
-                ←
-                {' '}
-                {previous.frontmatter.title}
+                ← {previous.frontmatter.title}
               </Link>
             )}
           </li>
           <li>
             {next && (
               <Link to={next.fields.slug} rel="next">
-                {next.frontmatter.title}
-                {' '}
-→
+                {next.frontmatter.title} →
               </Link>
             )}
           </li>
@@ -105,12 +97,13 @@ export default BlogPostTemplate;
 
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
-    allAuthorsJson { 
+    allAuthorsJson {
       nodes {
-        id,
-        name,
-        avatar,
+        id
+        name
+        avatar
         twitter
+        github
       }
     }
     site {

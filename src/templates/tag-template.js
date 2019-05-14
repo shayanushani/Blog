@@ -17,13 +17,10 @@ const Tags = ({ pageContext, data }) => {
       date={node.frontmatter.date}
       description={node.frontmatter.description || node.excerpt}
     />
-));
+  ));
   return (
     <Layout title={siteTitle}>
-      <SEO
-        title={siteTitle}
-        keywords={[siteTitle]}
-      />
+      <SEO title={siteTitle} keywords={[siteTitle]} />
       {renderedPost}
     </Layout>
   );

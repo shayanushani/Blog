@@ -14,7 +14,7 @@ if (existsSync(resolvedPath)) {
 }
 mkdirSync(resolvedPath);
 const template = `---
-title: ${postName}
+title: ${process.argv[2]}
 date: "${new Date().toISOString()}"
 ---
 `;
