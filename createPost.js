@@ -18,4 +18,4 @@ title: ${process.argv[2]}
 date: "${new Date().toISOString()}"
 ---
 `;
-writeFileSync(resolve(resolvedPath, `${postName}.md`), template);
+writeFileSync(resolve(resolvedPath, 'index.md'), template);

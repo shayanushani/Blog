@@ -34,7 +34,7 @@ filesystem
 PostCSS
 dev
 runtime
- - content/blog/Cutting-our-webpack-build-time-in-half/Cutting-our-webpack-build-time-in-half.md
+ - content/blog/Cutting-our-webpack-build-time-in-half/index.md
 DLL's
 HashCache
 1mb
