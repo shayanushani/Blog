@@ -36,7 +36,7 @@ One thing we've found is we have a lot of code. Many packages do not get active 
 
 ## Incremental Builds
 
-We use yarn workspaces, and whats known as a `mono-repo`. Essentially our entire codebase is in one git repo, divided into npm packages that all resolve in a single filesystem. In the past developers had to compile the entire codebase when changes were made. We created our own webpack plugin that detects which files have changed any only recompile the bundles specific to what has changed. Our plugin is a lot like the [Hard Source](https://github.com/mzgoddard/hard-source-webpack-plugin) plugin, which you can use to do the same thing. By detecting what has changed, and only recompiling the changed files, we cut many of our builds from 7+ minutes to 30 seconds.
+We use yarn workspaces, and whats known as a `mono-repo`. Essentially our entire codebase is in one git repo, divided into npm packages that all resolve in a single filesystem. In the past developers had to compile the entire codebase when changes were made. We created our own webpack plugin that detects which files have changed and only recompile the bundles specific to what has changed. Our plugin is a lot like the [Hard Source](https://github.com/mzgoddard/hard-source-webpack-plugin) plugin, which you can use to do the same thing. By detecting what has changed, and only recompiling the changed files, we cut many of our builds from 7+ minutes to 30 seconds.
 
 ## Other Improvements
 
