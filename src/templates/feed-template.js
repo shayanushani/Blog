@@ -4,11 +4,13 @@ import { graphql } from 'gatsby';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import PostSummary from '../components/PostSummary';
+import Pagination from '../components/Pagination';
 
-export default function BlogIndex({ data, location }) {
+const Feed = ({ data, location, pageContext = {} }) => {
+  const { totalCount, current = 1, limit } = pageContext;
   const siteTitle = data.site.siteMetadata.title;
   const posts = data.allMarkdownRemark.edges;
-  const renderedPost = posts.map(({ node }) => (
+  const renderFeed = posts.map(({ node }) => (
     <PostSummary
       key={node.fields.slug}
       title={node.frontmatter.title || node.fields.slug}
@@ -23,19 +25,31 @@ export default function BlogIndex({ data, location }) {
         title="All posts"
         keywords={['blog', 'gatsby', 'javascript', 'react']}
       />
-      {renderedPost}
+      {renderFeed}
+      <Pagination
+        totalCount={totalCount}
+        current={current}
+        postsPerPage={limit}
+      />
     </Layout>
   );
-}
+};
+
+export default Feed;
 
 export const pageQuery = graphql`
-  query {
+  query($skip: Int!, $limit: Int!) {
     site {
       siteMetadata {
         title
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMarkdownRemark(
+      sort: { fields: [frontmatter___date], order: DESC }
+      skip: $skip
+      limit: $limit
+    ) {
+      totalCount
       edges {
         node {
           excerpt

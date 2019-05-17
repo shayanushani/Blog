@@ -7,7 +7,9 @@ exports.createPages = ({ graphql, actions }) => {
   const blogPost = path.resolve('./src/templates/blog-post.js');
   const tagTemplate = path.resolve('./src/templates/tag-template.js');
   const allTagTemplate = path.resolve('./src/templates/all-tags-template.js');
-  
+  const FeedTemplate = path.resolve('./src/templates/feed-template.js');
+  const postsPerPage = 10;
+
   return graphql(
     `
       {
@@ -21,7 +23,7 @@ exports.createPages = ({ graphql, actions }) => {
                 slug
               }
               frontmatter {
-                title,
+                title
                 tags
               }
             }
@@ -29,7 +31,7 @@ exports.createPages = ({ graphql, actions }) => {
         }
       }
     `,
-  ).then((result) => {
+  ).then(result => {
     if (result.errors) {
       throw result.errors;
     }
@@ -53,7 +55,7 @@ exports.createPages = ({ graphql, actions }) => {
     });
     // only use unique values
     tags = [...new Set(tags)];
-    tags.forEach((tag) => {
+    tags.forEach(tag => {
       createPage({
         path: `/tags/${tag}/`,
         component: tagTemplate,
@@ -69,6 +71,21 @@ exports.createPages = ({ graphql, actions }) => {
         tags,
       },
     });
+
+    // Blog Feed Page
+    const numPages = Math.ceil(posts.length / postsPerPage);
+    Array.from({ length: numPages }).forEach((_item, index) => {
+      createPage({
+        path: index === 0 ? '/' : `/page/${index + 1}`,
+        component: FeedTemplate,
+        context: {
+          totalCount: posts.length,
+          limit: postsPerPage,
+          skip: index * postsPerPage,
+          current: index + 1,
+        },
+      });
+    });
     return null;
   });
 };
@@ -81,12 +98,12 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       // normalize tags to lower kebab case
       // eslint-disable-next-line no-param-reassign
       node.frontmatter.tags = node.frontmatter.tags.map(a => a.replace(/\s/g, '-').toLowerCase());
+      const value = createFilePath({ node, getNode });
+      createNodeField({
+        name: 'slug',
+        node,
+        value,
+      });
     }
-    const value = createFilePath({ node, getNode });
-    createNodeField({
-      name: 'slug',
-      node,
-      value,
-    });
   }
 };
