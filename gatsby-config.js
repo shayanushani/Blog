@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Revved`,
+    title: `The CarGurus Engineering Blog`,
     author: `CarGurus`,
     description: `The CarGurus engineering blog`,
     siteUrl: `https://cargurus.dev/`,
