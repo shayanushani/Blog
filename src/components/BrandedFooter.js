@@ -5,7 +5,7 @@ export default function BrandedFooter() {
   return (
     <footer className={styles.footer}>
       ©{new Date().getFullYear()},{' '}
-      <a href="https://www.cargurus.com">CarGurus</a>
+      <a href="https://www.cargurus.com">CarGurus, Inc., All Rights Reserved</a>
     </footer>
   );
 }
