@@ -11,7 +11,6 @@ import { StaticQuery, graphql } from 'gatsby';
 import Image from 'gatsby-image';
 import Twitter from './svg/twitter.svg';
 import GitHub from './svg/github.svg';
-import { rhythm } from '../utils/typography';
 import styles from './bio.module.less';
 
 const bioQuery = graphql`
@@ -51,7 +50,7 @@ function Bio({ author }) {
                 fixed={currentAuthorsImage.childImageSharp.fixed}
                 alt={name}
                 style={{
-                  marginRight: rhythm(1 / 2),
+                  marginRight: '0.75rem',
                   marginBottom: 0,
                   minWidth: 50,
                   borderRadius: '100%',
