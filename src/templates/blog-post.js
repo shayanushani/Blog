@@ -4,8 +4,8 @@ import { Link, graphql } from 'gatsby';
 import Bio from '../components/bio.js';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
-import { rhythm, scale } from '../utils/typography';
 import Tag from '../components/common/tag.js';
+import styles from './blog-post.module.less';
 
 class BlogPostTemplate extends React.Component {
   getTags() {
@@ -45,34 +45,13 @@ class BlogPostTemplate extends React.Component {
           description={post.frontmatter.description || post.excerpt}
         />
         <h1>{post.frontmatter.title}</h1>
-        <time
-          style={{
-            ...scale(-1 / 5),
-            display: 'block',
-            marginBottom: rhythm(1),
-            marginTop: rhythm(-1),
-          }}
-        >
-          {post.frontmatter.date}
-        </time>
+        <time className={styles.time}>{post.frontmatter.date}</time>
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
         {this.getTags()}
-        <hr
-          style={{
-            marginBottom: rhythm(1),
-          }}
-        />
+        <hr className={styles.hr} />
         <Bio author={this.getAuthor()} />
 
-        <ul
-          style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            justifyContent: 'space-between',
-            listStyle: 'none',
-            padding: 0,
-          }}
-        >
+        <ul className={styles.navButtons}>
           <li>
             {previous && (
               <Link to={previous.fields.slug} rel="prev">
