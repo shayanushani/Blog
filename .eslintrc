@@ -4,7 +4,7 @@
       "strict": 0,
       "react/prop-types": "off",
       "react/jsx-filename-extension": "off",
-      "import/extensions": 1  ,
+      "import/extensions": "2",
       "react/prefer-stateless-function": "off",
       "react/destructuring-assignment": "off",
       "react/no-danger": "off",
