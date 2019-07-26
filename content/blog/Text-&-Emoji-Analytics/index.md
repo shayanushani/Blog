@@ -14,11 +14,11 @@ tags:
 
 ## Text Data
 
-One of our products at CarGurus is text & chat. This product features a button a user can click on when visiting a dealer's vehicle and message directly with the dealership with any questions or  comments that they may have. The text is sent using Twilio's API and then stored in our Snowflake database. Curious about the data, I looked to conduct basic text and semantic analysis with a focus on cars and emojis. Emojis have fundamentally shifted the paradigm of how we communicate with one another, where one simple symbol can convey a message and emotion. 
+One of our products at CarGurus is text & chat. This product features a button a user can click on when visiting a dealer's vehicle listing and message directly with the dealership with any questions or  comments that they may have. The text is sent using Twilio's API and then stored in our Snowflake database. Curious about the data, I looked to conduct basic text and semantic analysis with a focus on cars and emojis. Emojis have fundamentally shifted the paradigm of how we communicate with one another, where one simple symbol can convey a message and emotion. 
 
 ## Normalization
 
-Text data can be a big mess, especially when its user inputted. There are generally inconsistencies, strange symbols, spelling mistakes, and more. Thankfully there are tools at our disposal to clean text data. Depending on the nature of your data and the goal you are looking to achieve there are a number of steps to take during the cleaning process. 
+Text data can be a big mess, especially when it's user inputted. There are generally inconsistencies, strange symbols, spelling mistakes, and more. Thankfully there are tools at our disposal to clean text data. Depending on the nature of your data and the goal you are looking to achieve, there are a number of steps to take during the cleaning process. 
 
 1. Case Sensitivity 
 To properly analyze any set of text data the case of all letters need to be the same, otherwise any analysis you do will see “You” and “you” as two separate words. So it needs to be all lowercase or uppercase. 
@@ -26,14 +26,14 @@ To properly analyze any set of text data the case of all letters need to be the 
 > New Sentence: “i just bouht the greatest car off of cargurus!” 
 
 2. Spelling Mistakes 
-We all make spelling mistakes, and within our text data we see a lot of these. Thankfully,these can be fixed and something that should be done earlier in the normalization proocess. There are a variety of tools that can be used, most of the analysis I will be doing will use TextBlob and NLTK. TextBlob's spelling corrector is based on Peter Norvig's Blog Post, ["How to Write a Spelling Corrector."](https://norvig.com/spell-correct.html) 
+We all make spelling mistakes, and within our text data we see a lot of these. Thankfully, these can be fixed and something that should be done earlier in the normalization process. There are a variety of tool that can be used but most of the analysis that I do use TextBlob and NLTK. TextBlob's spelling corrector is based on Peter Norvig's Blog Post, ["How to Write a Spelling Corrector."](https://norvig.com/spell-correct.html) 
 
 > New Sentence: “i just bought the greatest car off of cargurus!”
 
 3. Removals 
 (Rare words, common words, numbers, punctuation)
 
-Within a set of text data, much of it can be discarded since they don’t hold any real value and may throw models off. These include rare words, common words like “the” or “a”, punctuation, and numbers. 
+Within a set of text data, much of it can be discarded since it doesn't hold any real value and may throw models off. These include rare words, common words like “the” or “a”, punctuation, and numbers. 
 
 > New Sentence: “bought greatest car cargurus” 
 
@@ -43,7 +43,7 @@ Lemmatization is the process of determining the lemma, or root, of a word. This 
 
 > New Sentence: “bought great car cargurus” 
 
-There are a number of other steps that can be taken as well from here such as tokenization, n-grams, and bag-of-words.
+There are a number of other steps that can be taken as well from here, such as tokenization, n-grams, and bag-of-words.
 
 In addition to our normalization process I have applied sentiment to the body of text as well as a separate column for stripping out emojis. This ([emoji list](https://github.com/theraot/emoji) may come in handy if you're looking to conduct your own project. TextBlob's sentiment polarity is a number that ranges from -1 to 1, where 1 is the highest sentiment, 0 is neutral, and -1 is the lowest. TextBlob also has another handy feature as part of the sentiment class that provides a score between 0 and 1 for subjectivity where 0 is the most objective and 1 is the most subjective. 
 
