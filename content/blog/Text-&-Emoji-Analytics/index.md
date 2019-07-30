@@ -62,7 +62,7 @@ The top emojis by sentiment that are statistically significant are:
 2. 👍
 3. 😃
 4. 😎
-5. ☺
+5. ️☺️
 6. 😉
 7. 🙂
 8. 😁
