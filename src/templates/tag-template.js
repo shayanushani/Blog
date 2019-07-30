@@ -13,7 +13,7 @@ const Tags = ({ pageContext, data }) => {
   const renderedPost = posts.map(({ node }) => (
     <PostSummary
       title={node.frontmatter.title || node.fields.slug}
-      slug={node.fields.slug}
+      slug={node.frontmatter.permalink || node.fields.slug}
       date={node.frontmatter.date}
       description={node.frontmatter.description || node.excerpt}
     />
@@ -46,6 +46,7 @@ export const pageQuery = graphql`
             date(formatString: "MMMM DD, YYYY")
             title
             description
+            permalink
           }
         }
       }
