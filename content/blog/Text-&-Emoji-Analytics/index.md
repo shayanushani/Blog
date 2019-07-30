@@ -1,7 +1,10 @@
 ---
 title: Text & Semantic Analytics 📱
 date: "2019-07-30T23:25:16.970Z"
-author: "sushani" 
+author: "sushani"
+permalink: /Text-And-Emoji-Analytics/
+redirects:
+- /Text-&-Emoji-Analytics/
 tags:
 - text
 - analytics
