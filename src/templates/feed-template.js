@@ -14,7 +14,7 @@ const Feed = ({ data, location, pageContext = {} }) => {
     <PostSummary
       key={node.fields.slug}
       title={node.frontmatter.title || node.fields.slug}
-      slug={node.fields.slug}
+      slug={node.frontmatter.permalink || node.fields.slug}
       date={node.frontmatter.date}
       description={node.frontmatter.description || node.excerpt}
     />
@@ -60,6 +60,7 @@ export const pageQuery = graphql`
             date(formatString: "MMMM DD, YYYY")
             title
             description
+            permalink
           }
         }
       }

@@ -2,7 +2,7 @@ const path = require('path');
 const { createFilePath } = require('gatsby-source-filesystem');
 
 exports.createPages = ({ graphql, actions }) => {
-  const { createPage } = actions;
+  const { createPage, createRedirect } = actions;
 
   const blogPost = path.resolve('./src/templates/blog-post.js');
   const tagTemplate = path.resolve('./src/templates/tag-template.js');
@@ -25,6 +25,8 @@ exports.createPages = ({ graphql, actions }) => {
               frontmatter {
                 title
                 tags
+                permalink
+                redirects
               }
             }
           }
@@ -40,11 +42,13 @@ exports.createPages = ({ graphql, actions }) => {
     const posts = result.data.allMarkdownRemark.edges;
     let tags = [];
     posts.forEach((post, index) => {
-      const previous = index === posts.length - 1 ? null : posts[index + 1].node;
+      const previous =
+        index === posts.length - 1 ? null : posts[index + 1].node;
       const next = index === 0 ? null : posts[index - 1].node;
       tags = tags.concat(post.node.frontmatter.tags);
+      const url = post.node.frontmatter.permalink || post.node.fields.slug;
       createPage({
-        path: post.node.fields.slug,
+        path: url,
         component: blogPost,
         context: {
           slug: post.node.fields.slug,
@@ -52,6 +56,15 @@ exports.createPages = ({ graphql, actions }) => {
           next,
         },
       });
+      if (post.node.frontmatter.redirects) {
+        post.node.frontmatter.redirects.forEach(redirect => {
+          createRedirect({
+            fromPath: redirect,
+            toPath: url,
+            isPermanent: true,
+          });
+        });
+      }
     });
     // only use unique values
     tags = [...new Set(tags)];
@@ -97,7 +110,9 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     if (node.frontmatter && node.frontmatter.tags) {
       // normalize tags to lower kebab case
       // eslint-disable-next-line no-param-reassign
-      node.frontmatter.tags = node.frontmatter.tags.map(a => a.replace(/\s/g, '-').toLowerCase());
+      node.frontmatter.tags = node.frontmatter.tags.map(a =>
+        a.replace(/\s/g, '-').toLowerCase(),
+      );
       const value = createFilePath({ node, getNode });
       createNodeField({
         name: 'slug',
