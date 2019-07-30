@@ -14,7 +14,7 @@ tags:
 
 ## Text Data
 
-One of our products at CarGurus is text & chat. This product features a button a user can click on when visiting a vehicle listing and message the dealership directly with any questions or  comments that they may have. The text is sent using Twilio's API and then stored in our Snowflake database. Curious about the data, I looked to conduct basic text and semantic analysis with a focus on cars and emojis. Emojis have fundamentally shifted the paradigm of how we communicate with one another, where one simple symbol can convey a range of emotions. 
+One of our products at CarGurus is text & chat. This product features a button a user can click on when visiting a vehicle listing and message the dealership directly with any questions or  comments that they may have. The text is sent using Twilio's API and then stored in our Snowflake database. Curious about the data, I looked to conduct basic text and semantic analysis with a focus on cars and emojis. Emojis are interesting as they have fundamentally shifted the paradigm of how we communicate with one another, where one simple symbol can convey a range of emotions. 
 
 ## Normalization
 
@@ -28,7 +28,7 @@ To properly analyze any set of text data the case of all letters need to be the 
 > New Sentence: “i just bouht the greatest car off of cargurus!” 
 
 2. Spelling Mistakes 
-We all make spelling mistakes, and within our text data we see a lot of these. Thankfully, these can be fixed and something that should be done earlier in the normalization process. There are a variety of tools that can be used but most of the analysis that I do use TextBlob and NLTK. TextBlob's spelling corrector is based on Peter Norvig's Blog Post, ["How to Write a Spelling Corrector."](https://norvig.com/spell-correct.html) 
+We all make spelling mistakes, and within our text data we see a lot of these. Thankfully, these can be fixed and something that should be done earlier in the normalization process. There are a variety of tools that can be used, but most of the analysis that I do use TextBlob and NLTK. TextBlob's spelling corrector is based on Peter Norvig's Blog Post, ["How to Write a Spelling Corrector."](https://norvig.com/spell-correct.html) 
 
 > New Sentence: “i just bought the greatest car off of cargurus!”
 
@@ -46,13 +46,13 @@ Lemmatization is the process of determining the lemma, or root, of a word. For e
 
 There are a number of other steps that can be taken as well from here, such as tokenization, n-grams, and bag-of-words.
 
-In addition to our normalization process I have run TextBlob's sentiment property to the bodies of text as well as stripping out emojis to a separate column. This ([emoji list](https://github.com/theraot/emoji) may come in handy if you're looking to conduct your own project. TextBlob's sentiment polarity is a number that ranges from -1 to 1, where 1 is the highest sentiment, 0 is neutral, and -1 is the lowest. TextBlob also has another handy feature as part of the sentiment class that provides a score between 0 and 1 for subjectivity where 0 is the most objective and 1 is the most subjective. 
+In addition to our normalization process I have run TextBlob's sentiment property to the bodies of text as well as stripping out emojis to a separate column. This [emoji list](https://github.com/theraot/emoji) may come in handy if you're looking to conduct your own project. TextBlob's sentiment polarity is a number that ranges from -1 to 1; where 1 is the highest sentiment, 0 is neutral, and -1 is the lowest. TextBlob also has another handy feature as part of the sentiment class that provides a score between 0 and 1 for subjectivity where 0 is the most objective and 1 is the most subjective. 
 
 ## Analytics
 
 After the hard part of extracting, cleaning, and pre-processing comes the fun part of actually analyzing! 
 
-# Emoji Analytics
+### Emoji Analytics
 
 Emojis are generally used alongside bodies of text, so we can see what emojis had the highest sentiment in relation to the text they were sent with. 
 
@@ -87,7 +87,7 @@ Some other notes that came out of examining our emojis:
 * 👍The thumbs up emoji is most often used with some variation of the word "good". 
 * 🙏 & 😊 The pray and smiley emojis are most often used with some variation of the word "thanks". 
 
-# Make
+### Make
 
 CarGurus is the #1 most visited car shopping site in the U.S. which makes our data rich with car phrases. Considering this element, I dived into what makes and models are the most positive. 
 
@@ -104,7 +104,7 @@ The top makes by sentiment that are statistically significant are:
 9. Volkswagen 
 10. Subaru 
 
-# Model
+### Model
 
 The top models by sentiment that are statistically significant are:
 
@@ -121,7 +121,7 @@ The top models by sentiment that are statistically significant are:
 
 Clearly, Jeep wins in the models category especially with the Grand Cherokee showing more than twice as positive as the runner up. 
 
-# DateTime
+### DateTime
 
 There are tons of more elements to look at, but for the sake of this simple exercise I'll slice by date. 
 
