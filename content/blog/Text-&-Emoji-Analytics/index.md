@@ -46,7 +46,7 @@ Lemmatization is the process of determining the lemma, or root, of a word. This 
 
 There are a number of other steps that can be taken as well from here, such as tokenization, n-grams, and bag-of-words.
 
-In addition to our normalization process I have run Textblob's sentiment property to the body of text as well as stripping out emojis in a seperate column. This ([emoji list](https://github.com/theraot/emoji) may come in handy if you're looking to conduct your own project. TextBlob's sentiment polarity is a number that ranges from -1 to 1, where 1 is the highest sentiment, 0 is neutral, and -1 is the lowest. TextBlob also has another handy feature as part of the sentiment class that provides a score between 0 and 1 for subjectivity where 0 is the most objective and 1 is the most subjective. 
+In addition to our normalization process I have run TextBlob's sentiment property to the bodies of text as well as stripping out emojis to a separate column. This ([emoji list](https://github.com/theraot/emoji) may come in handy if you're looking to conduct your own project. TextBlob's sentiment polarity is a number that ranges from -1 to 1, where 1 is the highest sentiment, 0 is neutral, and -1 is the lowest. TextBlob also has another handy feature as part of the sentiment class that provides a score between 0 and 1 for subjectivity where 0 is the most objective and 1 is the most subjective. 
 
 ## Analytics
 
@@ -121,7 +121,7 @@ The top models by sentiment that are statistically significant are:
 
 Clearly, Jeep wins in the models category especially with the Grand Cherokee showing more than twice as positive as the runner up. 
 
-# Time of Day 
+# DateTime
 
 There are tons of more elements to look at, but for the sake of this simple exercise I'll slice by date. 
 
