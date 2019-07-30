@@ -3,7 +3,7 @@ module.exports = {
     title: `The CarGurus Engineering Blog`,
     author: `CarGurus`,
     description: `The CarGurus engineering blog`,
-    siteUrl: `https://cargurus.dev/`,
+    siteUrl: `https://cargurus.dev`,
     social: {
       twitter: `CarGurus`,
     },
