@@ -9,6 +9,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
+import { snowplowScript } from './snowplow.js';
 
 function SEO({ description, lang, meta, keywords, title }) {
   const { site } = useStaticQuery(
@@ -81,7 +82,9 @@ function SEO({ description, lang, meta, keywords, title }) {
             : [],
         )
         .concat(meta)}
-    />
+    >
+      <script>{snowplowScript}</script>
+    </Helmet>
   );
 }
 
