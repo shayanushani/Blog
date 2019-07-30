@@ -14,7 +14,7 @@ tags:
 
 ## Text Data
 
-One of our products at CarGurus is text & chat. This product features a button a user can click on when visiting a vehicle listing and message the dealership directly with any questions or  comments that they may have. The text is sent using Twilio's API and then stored in our Snowflake database. Curious about the data, I looked to conduct basic text and semantic analysis with a focus on cars and emojis. Emojis are interesting as they have fundamentally shifted the paradigm of how we communicate with one another, where one simple symbol can convey a range of emotions. 
+One of our products at CarGurus is text & chat. This product features a button a user can click on when visiting a vehicle listing and message the dealership directly with any questions or  comments that they may have. The text is sent using Twilio's API and then stored in our Snowflake database. Curious about the data, I looked to conduct basic text and semantic analysis with a focus on cars and emojis. Emojis are interesting as they have fundamentally shifted the paradigm of how we communicate with one another, where a simple symbol can convey a range of emotions. 
 
 ## Normalization
 
@@ -33,13 +33,11 @@ We all make spelling mistakes, and within our text data we see a lot of these. T
 > New Sentence: “i just bought the greatest car off of cargurus!”
 
 3. Removals - rare words, common words, numbers, punctuation
-
 Within a set of text data, much of it can be discarded since it doesn't hold any real value and may throw models off. These include rare words, common words like “the” or “a”, punctuation, and numbers. 
 
 > New Sentence: “bought greatest car cargurus” 
 
 4. Lemmatization 
-
 Lemmatization is the process of determining the lemma, or root, of a word. For example, “good” is the lemma of the word “better.” A similar technique is called stemming which identifies the word stems by removing word endings such as “ed”, “ing”, and “ly”. So the lemma of "walking" is "walk." Stemming does not benefit from lemmatization’s ability in dealing with words outside of specific endings. 
 
 > New Sentence: “bought great car cargurus” 
