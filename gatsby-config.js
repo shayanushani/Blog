@@ -3,7 +3,7 @@ module.exports = {
     title: `The CarGurus Engineering Blog`,
     author: `CarGurus`,
     description: `The CarGurus engineering blog`,
-    siteUrl: `https://cargurus.dev/`,
+    siteUrl: `https://cargurus.dev`,
     social: {
       twitter: `CarGurus`,
     },
@@ -21,9 +21,9 @@ module.exports = {
         stages: ['develop', 'build-javascript'],
         options: {
           emitWarning: true,
-          failOnError: true
-        }
-      }
+          failOnError: true,
+        },
+      },
     },
     {
       resolve: `gatsby-source-filesystem`,
@@ -79,7 +79,59 @@ module.exports = {
         trackingId: `UA-4745999-21`,
       },
     },
-    `gatsby-plugin-feed`,
+    {
+      resolve: `gatsby-plugin-feed`,
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                title
+                description
+                siteUrl
+                site_url: siteUrl
+              }
+            }
+          }
+        `,
+        feeds: [
+          {
+            serialize: ({ query: { site, allMarkdownRemark } }) => {
+              return allMarkdownRemark.edges.map(edge => {
+                return Object.assign({}, edge.node.frontmatter, {
+                  description: edge.node.excerpt,
+                  date: edge.node.frontmatter.date,
+                  url: site.siteMetadata.siteUrl + (edge.node.frontmatter.permalink || edge.node.fields.slug),
+                  guid: site.siteMetadata.siteUrl + (edge.node.frontmatter.permalink || edge.node.fields.slug),
+                  custom_elements: [{ 'content:encoded': edge.node.html }],
+                });
+              });
+            },
+            query: `
+              {
+                allMarkdownRemark(
+                  sort: { order: DESC, fields: [frontmatter___date] },
+                ) {
+                  edges {
+                    node {
+                      excerpt
+                      html
+                      fields { slug }
+                      frontmatter {
+                        title
+                        date
+                        permalink
+                      }
+                    }
+                  }
+                }
+              }
+            `,
+            output: '/rss.xml',
+          },
+        ],
+      },
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -115,11 +167,11 @@ module.exports = {
           {
             // don't use cache for trailing slash urls, or urls that end in .dev
             urlPattern: /(\/|\.dev)$/,
-            handler: "networkFirst"
-          }
+            handler: 'networkFirst',
+          },
         ],
-    }
-  },
+      },
+    },
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-plugin-typography`,
@@ -128,4 +180,4 @@ module.exports = {
       },
     },
   ],
-}
+};
