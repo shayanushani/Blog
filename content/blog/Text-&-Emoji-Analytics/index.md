@@ -40,7 +40,7 @@ Within a set of text data, much of it can be discarded since it doesn't hold any
 
 4. Lemmatization 
 
-Lemmatization is the process of determining the lemma, or root, of a word. This technique can help find the root of a word to help better analyze the data, for example “good” is the lemma of the word “better.” A similar technique is called stemming which identifies the word stems by removing word endings such as “ed”, “ing”, and “ly”. So the lemma of "walking" is "walk." Stemming does not benefit from lemmatization’s ability in dealing with words outside of specific endings. 
+Lemmatization is the process of determining the lemma, or root, of a word. For example, “good” is the lemma of the word “better.” A similar technique is called stemming which identifies the word stems by removing word endings such as “ed”, “ing”, and “ly”. So the lemma of "walking" is "walk." Stemming does not benefit from lemmatization’s ability in dealing with words outside of specific endings. 
 
 > New Sentence: “bought great car cargurus” 
 
