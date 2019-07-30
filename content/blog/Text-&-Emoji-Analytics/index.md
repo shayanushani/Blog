@@ -23,25 +23,21 @@ Text data can be a big mess, especially when it's user inputted. There are gener
 > “I just bouht the greatest car off of CarGurus!” 
 
 1. Case Sensitivity 
-
 To properly analyze any set of text data the case of all letters need to be the same, otherwise any analysis will see “You” and “you” as two separate words. So it needs to be all lowercase or uppercase. 
 
 > New Sentence: “i just bouht the greatest car off of cargurus!” 
 
 2. Spelling Mistakes 
-
 We all make spelling mistakes, and within our text data we see a lot of these. Thankfully, these can be fixed and something that should be done earlier in the normalization process. There are a variety of tools that can be used, but most of the analysis that I do use TextBlob and NLTK. TextBlob's spelling corrector is based on Peter Norvig's Blog Post, ["How to Write a Spelling Corrector."](https://norvig.com/spell-correct.html) 
 
 > New Sentence: “i just bought the greatest car off of cargurus!”
 
 3. Removals - rare words, common words, numbers, punctuation
-
 Within a set of text data, much of it can be discarded since it doesn't hold any real value and may throw models off. These include rare words, common words like “the” or “a”, punctuation, and numbers. 
 
 > New Sentence: “bought greatest car cargurus” 
 
 4. Lemmatization 
-
 Lemmatization is the process of determining the lemma, or root, of a word. For example, “good” is the lemma of the word “better.” A similar technique is called stemming which identifies the word stems by removing word endings such as “ed”, “ing”, and “ly”. So the lemma of "walking" is "walk." Stemming does not benefit from lemmatization’s ability in dealing with words outside of specific endings. 
 
 > New Sentence: “bought great car cargurus” 
