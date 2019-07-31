@@ -16,6 +16,8 @@ mkdirSync(resolvedPath);
 const template = `---
 title: ${process.argv[2]}
 date: "${new Date().toISOString()}"
+tags:
+- sample
 ---
 `;
 writeFileSync(resolve(resolvedPath, 'index.md'), template);
